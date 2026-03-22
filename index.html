@@ -112,18 +112,35 @@
         <div class="text-2xl font-extrabold tracking-tighter text-blue-900 font-['Manrope']">
             Sagun Casein
         </div>
+        
         <div class="hidden md:flex items-center space-x-8">
-            <a class="text-blue-700 border-b-2 border-blue-700 pb-1 font-['Manrope'] font-bold tracking-tight" href="#products">Products</a>
-            <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="#about">About Us</a>
-            <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="#quality">Quality</a>
-            <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="#infrastructure">Infrastructure</a>
+            <a class="text-blue-700 border-b-2 border-blue-700 pb-1 font-['Manrope'] font-bold tracking-tight" href="#about">About Us</a>
+            <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="#products">Products</a>
+            <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="#industries">Applications</a>
+            <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="#testimonial">Testimonials</a>
             <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight" href="#contact">Contact</a>
         </div>
-        <button class="bg-primary hover:bg-primary-container text-on-primary px-6 py-2.5 rounded-lg font-bold transition-all active:scale-95 shadow-md">
-            Get a Quote
-        </button>
+
+        <div class="flex items-center gap-4">
+            <a href="#contact" class="bg-primary hover:bg-primary-container text-on-primary px-6 py-2.5 rounded-lg font-bold transition-all active:scale-95 shadow-md">
+                Get a Quote
+            </a>
+            
+            <button id="mobile-menu-btn" class="md:hidden text-primary focus:outline-none flex items-center justify-center">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
     </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-t border-outline-variant/20 flex-col px-8 py-6 space-y-4 shadow-lg">
+        <a class="text-blue-700 font-['Manrope'] font-bold tracking-tight block w-full mobile-link" href="#about">About Us</a>
+        <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight block w-full mobile-link" href="#products">Products</a>
+        <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight block w-full mobile-link" href="#industries">Applications</a>
+        <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight block w-full mobile-link" href="#testimonial">Testimonials</a>
+        <a class="text-slate-600 hover:text-blue-900 transition-colors font-['Manrope'] font-bold tracking-tight block w-full mobile-link" href="#contact">Contact</a>
+    </div>
 </header>
+
 
 <main>
     <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -417,7 +434,7 @@
 </section>
 
 <!-- Ratings & Reviews -->
-<section class="py-32 bg-surface-container-low">
+<section class="py-32 bg-surface-container-low" id="testimonial">
 <div class="max-w-screen-2xl mx-auto px-8">
 <div class="text-center mb-20">
 <h2 class="text-primary text-sm font-bold tracking-widest uppercase mb-4">Client Feedback</h2>
@@ -499,7 +516,7 @@
                         </div>
                         <div>
                             <h5 class="font-bold text-lg">Factory Location</h5>
-                            <p class="text-on-surface-variant">Sagun Casein Plant, Industrial Area,<br/>Morena, Madhya Pradesh - 476001, India</p>
+                            <p class="text-on-surface-variant">Sagun Casein Plant<br/>Morena, Madhya Pradesh - 476001, India</p>
                         </div>
                     </div>
 
@@ -509,7 +526,7 @@
                         </div>
                         <div>
                             <h5 class="font-bold text-lg">Business Inquiries</h5>
-                            <p class="text-on-surface-variant">+91 94251 12345</p>
+                            <p class="text-on-surface-variant">+91 7772878122</p>
                             <p class="text-xs text-primary font-bold mt-1">Mon-Sat: 9:00 AM - 7:00 PM IST</p>
                         </div>
                     </div>
@@ -596,8 +613,7 @@
     </div>
 </footer>
 
-
-<a href="https://wa.me/7772878122?text=Hello%20Sagun%20Casein,%20I%20am%20interested%20in%20your%20industrial%20casein%20products." 
+    <a href="https://wa.me/7772878122?text=Hello%20Sagun%20Casein,%20I%20am%20interested%20in%20your%20industrial%20casein%20products." 
    target="_blank" 
    class="fixed bottom-8 right-8 z-[60] group flex items-center"
    data-aos="fade-left" 
@@ -616,6 +632,8 @@
         </svg>
     </div>
 </a>
+
+
 
 <script>
     // 1. Initialize Animations (AOS)
@@ -728,6 +746,34 @@
             }
         });
     }
+    
+    // 5. Hamburger Menu Logic
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+        const menuIcon = mobileMenuBtn.querySelector('.material-symbols-outlined');
+
+        // Toggle menu visibility
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            
+            // Switch icon between 'menu' and 'close'
+            menuIcon.textContent = mobileMenu.classList.contains('hidden') ? 'menu' : 'close';
+        });
+
+        // Close menu when a link is clicked
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                menuIcon.textContent = 'menu';
+            });
+        });
+    }
+    
 </script>
 
 </body>
